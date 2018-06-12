@@ -1,16 +1,11 @@
 
 file( GLOB UNIT_TEST_SRCS *_test.cpp )
 
-gtest_begin(videoio_go NO_TEMPLATE)
+gtest_begin(libg3logger)
   fips_files(
     ${UNIT_TEST_SRCS}
-    main.cpp
   )
 
-  fips_deps(videoio_go)
-
-  fips_libs( ${Boost_LIBRARIES} )
+  fips_deps(g3logger)
 
 gtest_end()
-
-add_dependencies(videoio_go videoio_go_testdata)
