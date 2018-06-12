@@ -1,11 +1,11 @@
 
 file( GLOB UNIT_TEST_SRCS *_test.cpp )
 
-gtest_begin(libg3logger)
+gtest_begin(liblogger)
   fips_files(
     ${UNIT_TEST_SRCS}
   )
 
-  fips_deps(g3logger)
+  fips_deps(logger)
 
 gtest_end()
