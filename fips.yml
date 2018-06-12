@@ -1,0 +1,15 @@
+imports:
+    fips-googletest:
+        git: https://github.com/amarburg/fips-googletest.git
+    fips-g3log:
+        git: https://github.com/amarburg/fips-g3log
+
+
+exports:
+  header-dirs:
+    - include/
+  modules:
+    g3logger: .
+
+defines:
+  FIPS_EXCEPTIONS: ON
