@@ -2,7 +2,7 @@
 #include <iostream>
 #include <g3log/g3log.hpp>
 
-#include "libg3log/g3logger.h"
+#include "libg3logger/g3logger.h"
 
 
 namespace libg3log {
