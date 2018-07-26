@@ -1,9 +1,9 @@
 imports:
-    fips-googletest:
-        git: https://github.com/amarburg/fips-googletest.git
-    fips-g3log:
-        git: https://github.com/amarburg/fips-g3log
-
+  fips-googletest:
+      git: https://github.com/amarburg/fips-googletest.git
+      cond: "FIPS_UNITTESTS"
+  fips-g3log:
+      git: https://github.com/amarburg/fips-g3log
 
 exports:
   header-dirs:
@@ -12,5 +12,6 @@ exports:
     logger: .
 
 defines:
+  FIPS_RTTI: ON
   FIPS_EXCEPTIONS: ON
   FIPS_UNITTESTS_RUN_AFTER_BUILD: ON
