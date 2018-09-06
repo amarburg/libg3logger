@@ -6,6 +6,6 @@ gtest_begin(liblogger)
     ${UNIT_TEST_SRCS}
   )
 
-  fips_deps(logger)
+  fips_deps(g3logger)
 
 gtest_end()
