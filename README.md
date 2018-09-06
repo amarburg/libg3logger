@@ -1,3 +1,3 @@
-# libg3log
+# libg3logget
 
-Thin wrapper of helpful functions around [fips-g3log](https://github.com/amarburg/fips-g3log).
+Set of thin wrappers around [fips-g3log](https://github.com/amarburg/fips-g3log).
