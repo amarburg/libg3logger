@@ -5,7 +5,7 @@
 #include "libg3logger/g3logger.h"
 
 
-namespace libg3log {
+namespace libg3logger {
 
 G3Logger::G3Logger( const std::string &appName )
   : worker( g3::LogWorker::createLogWorker() ),

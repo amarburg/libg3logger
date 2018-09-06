@@ -4,7 +4,7 @@
 
 #include "G3LogSinks.h"
 
-namespace libg3log {
+namespace libg3logger {
 
   struct G3Logger {
 
