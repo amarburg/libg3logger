@@ -2,8 +2,8 @@ imports:
   fips-googletest:
       git: https://github.com/amarburg/fips-googletest.git
       cond: "FIPS_UNITTESTS"
-  fips-g3log:
-      git: https://github.com/amarburg/fips-g3log
+  g3log-fips:
+      git: https://github.com/amarburg/g3log-fips
 
 exports:
   header-dirs:
