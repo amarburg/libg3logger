@@ -7,13 +7,15 @@
 
 namespace libg3logger {
 
-G3Logger::G3Logger( const std::string &appName )
+G3Logger::G3Logger( const std::string &appName, const LEVELS level )
   : worker( g3::LogWorker::createLogWorker() ),
-  stderrHandle( worker->addSink(std::unique_ptr<ColorStderrSink>( new ColorStderrSink ),
+    stderrHandle( worker->addSink(std::unique_ptr<ColorStderrSink>( new ColorStderrSink ),
                                        &ColorStderrSink::ReceiveLogMessage) )
 {
 
   auto handle = worker->addDefaultLogger(appName, ".");
+  stderrHandle->call( &ColorStderrSink::setThreshold, level );
+
 
   g3::initializeLogging(worker.get());
   std::future<std::string> log_file_name = handle->call(&g3::FileSink::fileName);
@@ -28,6 +30,11 @@ G3Logger::G3Logger( const std::string &appName )
 void G3Logger::verbose( bool verbose )
 {
    stderrHandle->call( &ColorStderrSink::setThreshold, DEBUG );
+}
+
+void G3Logger::setLevel( const LEVELS level )
+{
+   stderrHandle->call( &ColorStderrSink::setThreshold, level );
 }
 
 void G3Logger::logBanner( void )
