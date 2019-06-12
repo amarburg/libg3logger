@@ -16,7 +16,6 @@ G3Logger::G3Logger( const std::string &appName, const LEVELS level )
   auto handle = worker->addDefaultLogger(appName, ".");
   stderrHandle->call( &ColorStderrSink::setThreshold, level );
 
-
   g3::initializeLogging(worker.get());
   std::future<std::string> log_file_name = handle->call(&g3::FileSink::fileName);
 
@@ -26,6 +25,10 @@ G3Logger::G3Logger( const std::string &appName, const LEVELS level )
 
 }
 
+
+G3Logger::~G3Logger() {
+  worker.release();
+}
 
 void G3Logger::verbose( bool verbose )
 {
