@@ -1,4 +1,6 @@
 
+#include <unistd.h>
+
 #include <iostream>
 #include <g3log/g3log.hpp>
 
@@ -8,12 +10,12 @@
 namespace libg3logger {
 
 G3Logger::G3Logger( const std::string &appName, const LEVELS level )
-  : worker( g3::LogWorker::createLogWorker() ),
-    stderrHandle( worker->addSink(std::unique_ptr<ColorStderrSink>( new ColorStderrSink ),
-                                       &ColorStderrSink::ReceiveLogMessage) )
+  : worker( g3::LogWorker::createLogWorker() )
 {
-
   auto handle = worker->addDefaultLogger(appName, ".");
+
+  stderrHandle = worker->addSink(std::unique_ptr<ColorStderrSink>( new ColorStderrSink ),
+                                     &ColorStderrSink::ReceiveLogMessage);
   stderrHandle->call( &ColorStderrSink::setThreshold, level );
 
   g3::initializeLogging(worker.get());
@@ -28,6 +30,8 @@ G3Logger::G3Logger( const std::string &appName, const LEVELS level )
 
 G3Logger::~G3Logger() {
   worker.release();
+
+  g3::internal::shutDownLogging();
 }
 
 void G3Logger::verbose( bool verbose )

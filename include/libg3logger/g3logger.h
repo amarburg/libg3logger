@@ -2,7 +2,7 @@
 
 #include <g3log/logworker.hpp>
 
-#include "G3LogSinks.h"
+#include "ColorStderrSink.h"
 
 namespace libg3logger {
 

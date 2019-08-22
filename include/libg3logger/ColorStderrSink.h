@@ -10,7 +10,7 @@ struct ColorStderrSink {
 
   ~ColorStderrSink()
   {
-    std::cerr.flush(); 
+    std::cout << std::flush;
   }
 
   void setThreshold( const LEVELS t )
@@ -35,7 +35,7 @@ struct ColorStderrSink {
     if( level.value >= _threshold.value ) {
       auto color = GetColor(level);
 
-      std::cerr << "\033[" << color << "m" << logEntry.get().toString() << "\033[m"; // << std::endl;
+      std::cout << "\033[" << color << "m" << logEntry.get().toString() << "\033[m" << std::flush;
     }
   }
 
